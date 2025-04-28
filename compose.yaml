@@ -1,0 +1,12 @@
+services:
+  postgres-db:
+    container_name: car_db
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: car
+      POSTGRES_PASSWORD: car
+      POSTGRES_DB: Project_two
+      POSTGRES_HOST_AUTH_METHOD: password
+    ports:
+      - "5432:5432"
