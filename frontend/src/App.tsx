@@ -1,4 +1,7 @@
 import './App.css'
+import CarCard from "./components/CarCard.tsx";
+import {mockCars} from "./carService.ts";
+
 
 function App() {
 
@@ -6,7 +9,9 @@ function App() {
   return (
     <>
       <div>
-        <h1>Test</h1>
+        <CarCard
+
+            car={mockCars[0]}/>
       </div>
     </>
   )
