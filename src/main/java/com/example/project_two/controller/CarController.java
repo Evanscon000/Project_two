@@ -3,6 +3,7 @@ package com.example.project_two.controller;
 
 import com.example.project_two.entity.Car;
 import com.example.project_two.service.CarService;
+import org.springframework.boot.origin.Origin;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 
 @RequestMapping("/api/car-inventory")
+@CrossOrigin(origins = "http://localhost:5173")
 public class CarController {
 
     private final CarService carService;
