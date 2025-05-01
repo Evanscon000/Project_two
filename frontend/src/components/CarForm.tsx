@@ -14,7 +14,7 @@ const CarForm = ({carReturn}: any) => {
         model: "",
         year: Number(0),
         price: Number(0),
-        isUsed: false
+        used: false
     })
 
     const handleChange = (event: any) => {
@@ -32,6 +32,14 @@ const CarForm = ({carReturn}: any) => {
 
     const handleSubmitRefresh = (event: any) => {
         event.preventDefault();
+    }
+
+    function handleCheckbox(event: any) {
+        const {name, checked} = event.target;
+
+        setData((prev) => ({
+            ...prev, [name]: checked
+        }));
     }
 
     return (
@@ -77,9 +85,9 @@ const CarForm = ({carReturn}: any) => {
                 <label> isUsed:
                     <input
                         type="checkbox"
-                        checked={data.isUsed}
-                        name="isUsed"
-                        onChange={handleChange}
+                        checked={data.used}
+                        name="used"
+                        onChange={handleCheckbox}
                     />
                 </label>
                 <button

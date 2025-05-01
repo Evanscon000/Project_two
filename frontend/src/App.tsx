@@ -1,25 +1,36 @@
-import './App.css'
-import CarCard from "./components/CarCard.tsx";
-import {mockCars} from "./carService.ts";
-import CarForm from "./components/CarForm.tsx";
-import {Car} from "./types/Car.ts";
+import './App.css';
+import CarCard from './components/CarCard.tsx';
+import CarForm from './components/CarForm.tsx';
+import { Car } from './types/Car.ts';
+import { useEffect, useState } from 'react';
+import * as CarService from './CarService.ts';
 
 
 function App() {
 
-    const handleCarData = (data: Car) => {
-        console.log(data)
-    }
+  const [cars, setCars] = useState<Car[]>([]);
+
+  const handleCarData = async (data: Car) => {
+    const newCar = await CarService.createCar(data);
+    setCars([...cars, newCar]);
+  };
+
+  useEffect(() => {
+    CarService.fetchCars().then(setCars);
+  }, []);
 
   return (
     <>
-        <CarForm carReturn={handleCarData}/>
+      <CarForm carReturn={handleCarData} />
       <div>
-        <CarCard
-            car={mockCars[0]}/>
+        {cars.map((elem, index) =>
+          (<CarCard
+            key={index}
+            car={elem} />)
+        )}
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

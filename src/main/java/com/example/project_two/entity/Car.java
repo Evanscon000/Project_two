@@ -17,11 +17,11 @@ public class Car {
 
     private String model;
 
-    private int year;
+    private Integer year;
 
-    private double price;
+    private Double price;
 
-    private boolean isUsed;
+    private Boolean isUsed;
 
     public Long getId() {
         return id;
@@ -47,23 +47,23 @@ public class Car {
         this.model = model;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public boolean isUsed() {
+    public Boolean isUsed() {
         return isUsed;
     }
 

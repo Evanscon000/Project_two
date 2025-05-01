@@ -1,5 +1,5 @@
 import {render, screen} from "@testing-library/react";
-import {afterAll, expect} from "vitest";
+import {expect} from "vitest";
 import CarForm from "../CarForm.tsx";
 import {userEvent} from "@testing-library/user-event";
 
@@ -51,6 +51,16 @@ describe('CarForm', () => {
         screen.logTestingPlaygroundURL();
     });
 
+    it('should toggle [used] between both states', async () => {
+        render(<CarForm car={mockCar} />);
+        const isUsed = screen.getAllByRole('checkbox')[0];
+
+        await userEvent.click(isUsed);
+        expect(isUsed).toBeChecked();
+
+        await userEvent.click(isUsed);
+        expect(isUsed).not.toBeChecked();
+    });
 
     it('should return data to main', async () => {
         let mockCar2 = {

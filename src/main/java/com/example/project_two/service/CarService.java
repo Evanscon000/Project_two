@@ -26,11 +26,11 @@ public class CarService {
 
     public Car updateCarById(Long id,Car updateCar) {
         Car car = carRepository.findById(id).orElseThrow();
-        car.setMake(updateCar.getMake());
-        car.setModel(updateCar.getModel());
-        car.setYear(updateCar.getYear());
-        car.setPrice(updateCar.getPrice());
-        car.setUsed(updateCar.isUsed());
+        car.setMake(updateCar.getMake() != null ? updateCar.getMake() : car.getMake());
+        car.setModel(updateCar.getModel() != null ? updateCar.getModel() : car.getModel());
+        car.setYear(updateCar.getYear() != null ? updateCar.getYear() : car.getYear());
+        car.setPrice(updateCar.getPrice() != null ? updateCar.getPrice() : car.getPrice());
+        car.setUsed(updateCar.isUsed() != null ? updateCar.isUsed() : car.isUsed());
         return carRepository.save(car);
     }
 
